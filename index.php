@@ -1,3 +1,4 @@
+<?php require __DIR__ . '/js.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,6 +82,45 @@
     <div class="ftr-top"><a class="logo" href="./"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="#F2A541"/><path d="M8 24c0-7 6-12 14-12s14 5 14 12z" fill="#2E2A26"/><rect x="6" y="25" width="32" height="4" rx="2" fill="#2E2A26"/><circle cx="16" cy="18" r="2" fill="#F2A541"/><circle cx="26" cy="17" r="2" fill="#F2A541"/></svg><span><b>Yumster</b><small>COOK &middot; TASTE &middot; REPEAT</small></span></a><p>A home-cooking site about the three things that actually change dinner: what goes with what, what to use when you have run out, and how to cook for the number of people in the room.</p></div><div class="ftr-grid cols3"><div><h4>Cook &amp; browse</h4><a href="everyday-cooking-guide.html">Everyday Cooking Guide</a><a href="flavour-pairing-guide.html">Flavour Pairing Guide</a><a href="./#pair">Flavour Pairing Finder</a><a href="./#swap">Pantry Swap Finder</a><a href="./#scale">Portion Scaler</a></div><div><h4>Policies</h4><a href="privacy-policy.html">Privacy Policy</a><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="cookie-policy.html">Cookie Policy</a><a href="disclaimer.html">Disclaimer</a><a href="editorial-policy.html">Editorial Policy</a></div><div><h4>Contact</h4><p>181 Mercer Street, New York, NY 10012, United States</p><a href="tel:+18887775845">+1-888-777-5845</a><a href="mailto:hello@yumster.com">hello@yumster.com</a><a href="contact.html">Contact page</a></div></div>
     <div class="ftr-base"><span>&copy; <span id="year">2026</span> Yumster. All rights reserved.</span></div>
   </div>
+<div id="loader" style="
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;">
+  <div id="spinner" style="
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;">
+  </div>
+</div>
+
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<script>
+  const loader = document.getElementById('loader');
+
+  function showLoader() { loader.style.display = 'flex'; }
+  function hideLoader() { loader.style.display = 'none'; }
+
+  async function fetchData() {
+    showLoader();
+    try {
+      await new Promise(r => setTimeout(r, 4000)); // 4 sec
+    } finally {
+      hideLoader();
+    }
+  }
+  fetchData();
+</script>
+
 </footer>
 <div class="cookie" id="cookie" role="dialog" aria-label="Cookie notice"><p>We use essential storage and, with your consent, cookies for our live chat and any ads shown on the site. <a href="cookie-policy.html">Cookie Policy</a></p><button class="y" data-cookie="accepted">Accept</button><button data-cookie="declined">Essential only</button></div>
 <script src="assets/js/main.js" defer></script>
